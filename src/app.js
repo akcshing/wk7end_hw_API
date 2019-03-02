@@ -15,6 +15,7 @@ document.addEventListener('DOMContentLoaded', () => {
   selectView.bindEvents();
 
   const ghibliFilms = new GhibliFilms();
+  ghibliFilms.bindEvents();
   ghibliFilms.getData();
 
 });

@@ -5,6 +5,14 @@ const GhibliFilms = function () {
   this.films = null;
 };
 
+GhibliFilms.prototype.bindEvents = function () {
+  PubSub.subscribe("SelectView:select-change", (evt)=>{
+    filmIndex = evt.detail;
+    console.log(filmIndex);
+
+  })
+};
+
 GhibliFilms.prototype.getData = function () {
   const url = `https://ghibliapi.herokuapp.com/films`;
   const request = new RequestHelper(url);

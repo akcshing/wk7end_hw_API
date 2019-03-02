@@ -12,10 +12,7 @@ DisplayView.prototype.bindEvents = function () {
     this.render(films);
   })
 
-  PubSub.subscribe("SelectView:select-change", (evt)=>{
-    filmIndex = evt.detail;
-    console.log(filmIndex);
-  })
+
 };
 
 DisplayView.prototype.render = function (films) {
