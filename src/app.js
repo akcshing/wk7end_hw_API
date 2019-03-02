@@ -5,7 +5,7 @@ const DisplayView = require("./views/display_view");
 document.addEventListener('DOMContentLoaded', () => {
   console.log("loaded");
 
-  const displayElement = document.querySelector("display-section")
+  const displayElement = document.querySelector("#display-section")
   const displayView = new DisplayView(displayElement);
   displayView.bindEvents();
 
