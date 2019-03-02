@@ -13,8 +13,8 @@ GhibliFilms.prototype.getData = function () {
 
     .then((data) => {
       this.films = data;
-      console.log(this.films);
-      PubSub.publish('', this.films);
+      // console.log(this.films);
+      PubSub.publish("GhibliFilms:all-films-ready", this.films);
     })
     .catch((error) => console.error(error));
 };
