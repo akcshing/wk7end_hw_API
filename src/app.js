@@ -1,4 +1,5 @@
 const GhibliFilms = require("./models/ghibli_films");
+const GhibliPeople = require("./models/ghibli_people");
 const DisplayView = require("./views/display_view");
 const SelectView = require("./views/select_view");
 
@@ -17,5 +18,8 @@ document.addEventListener('DOMContentLoaded', () => {
   const ghibliFilms = new GhibliFilms();
   ghibliFilms.bindEvents();
   ghibliFilms.getData();
+
+  const ghibliPeople = new GhibliPeople();
+  ghibliPeople.bindEvents();
 
 });

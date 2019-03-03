@@ -1,9 +1,9 @@
-const FilmView = function(film){
+const BasicFilmView = function(film){
   this.film = film
 
 };
 
-FilmView.prototype.render = function () {
+BasicFilmView.prototype.render = function () {
   const filmContainer = document.createElement("div")
 
   const filmTitle = document.createElement("h2");
@@ -21,6 +21,10 @@ FilmView.prototype.render = function () {
   filmDirector.textContent = `Director: ${this.film.director}`;
   filmDetails.appendChild(filmDirector);
 
+  const filmProducer = document.createElement("li");
+  filmProducer.textContent = `Producer: ${this.film.producer}`;
+  filmDetails.appendChild(filmProducer);
+
   const filmDate = document.createElement("li");
   filmDate.textContent = `Release Date: ${this.film.release_date}`;
   filmDetails.appendChild(filmDate);
@@ -33,4 +37,4 @@ FilmView.prototype.render = function () {
 
 };
 
-module.exports = FilmView;
+module.exports = BasicFilmView;

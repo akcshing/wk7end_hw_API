@@ -1,5 +1,6 @@
 const PubSub = require("../helpers/pub_sub")
 const RequestHelper = require("../helpers/request_helper");
+const GhibliPeople = require("../models/ghibli_people");
 
 const GhibliFilms = function () {
   this.films = null;
@@ -8,9 +9,17 @@ const GhibliFilms = function () {
 GhibliFilms.prototype.bindEvents = function () {
   PubSub.subscribe("SelectView:select-change", (evt)=>{
     filmIndex = evt.detail;
-    console.log(filmIndex);
-
+    const selectedFilm = this.films[filmIndex];
+    const ghibliPeople = new GhibliPeople();
+    ghibliPeople.getData(selectedFilm.people)
+    .then(
+      (people) => {
+        console.log(people);
+        const filmAndPeople = {film: selectedFilm, people: people}
+        PubSub.publish("GhibliFilms:selected-film-ready", filmAndPeople);
+    })
   })
+
 };
 
 GhibliFilms.prototype.getData = function () {
@@ -21,7 +30,6 @@ GhibliFilms.prototype.getData = function () {
 
     .then((data) => {
       this.films = data;
-      // console.log(this.films);
       PubSub.publish("GhibliFilms:all-films-ready", this.films);
     })
     .catch((error) => console.error(error));
